@@ -7,7 +7,7 @@ const Card = ({data}) => {
 
     
   return (
-    <div className='relative w-60 h-72 rounded-[50px] text-white bg-black p-10 overflow-hidden'>
+    <div className='relative flex-shrink-0  w-60 h-72 rounded-[50px] text-white bg-black p-10 overflow-hidden'>
       <FaRegFileAlt />
       <p className='mt-5 text-sm leading-tight font-semibold'>{data.desc}</p>
       <div className='footer absolute bottom-0  w-full  left-0'>
@@ -25,7 +25,12 @@ const Card = ({data}) => {
            </span>
        
         </div>
-        <div className='tag w-full py-4 bg-green-500  flex items-center justify-center'><h3 className='text-sm font-semibold'>Download Now</h3></div>
+        {
+            data.tag.isOpen && (
+                <div className={`tag w-full py-4  ${data.tag.tagColor === "blue" ? "bg-blue-600" : "bg-green-600" } flex items-center justify-center`}><h3 className='text-sm font-semibold'>{data.tag.tagTitle}</h3></div>
+            ) 
+        }
+    
       </div>
     </div>
   );
